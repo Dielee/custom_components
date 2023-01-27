@@ -90,6 +90,7 @@ void JSDrive::loop() {
       }
       if (this->height_sensor_ != nullptr) {
         float num = segs_to_num(d[0]) * 100 + segs_to_num(d[1]) * 10 + segs_to_num(d[2]);
+        ESP_LOGD(TAG, "Desk height: %02x", num);
         if (d[1] & 0x80)
           num /= 10.0;
         this->height_sensor_->publish_state(num);
